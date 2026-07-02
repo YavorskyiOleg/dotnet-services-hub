@@ -1,0 +1,14 @@
+services:
+# Це локальна база даних PostgreSQL для розробки
+  projects-db:
+    image: postgres:16-alpine
+    container_name: myprojects_postgres_local
+    environment:
+      POSTGRES_USER: dev_user # Змінити на проді !!!
+      POSTGRES_PASSWORD: dev_password # Змінити на проді !!!
+      POSTGRES_DB: my_projects_list_db # Змінити на проді !!!
+    ports:
+      - "5433:5432" # Прокидаємо порт 5432 контейнера на порт 5433 хоста # Змінити на проді !!!
+    volumes:
+      # Зберігаємо дані в окремій папці для цього API на диску D
+      - "D:/J/data/MyProjectsList.Api:/var/lib/postgresql/data" # Змінити на проді !!! (на сервері буде інший шлях) # - my_projects_data:/var/lib/postgresql/data
